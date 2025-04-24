@@ -1,5 +1,5 @@
 export class Skills{
-    id?: string;
-    skill: string='';
-    porcentage: string='';
+  id  ?: string;
+    lenguajes?: string;
+    tecnologia?: string;
   }

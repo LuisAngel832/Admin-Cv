@@ -7,7 +7,7 @@ import { Certificates } from '../../models/certificates/certificates.model';
 })
 export class CertificatesService {
  
-  private dbPath='/certificates';
+  private dbPath='/Certificates';
   certificatesRef: AngularFirestoreCollection<Certificates>;
 
   constructor(private db: AngularFirestore) {

@@ -7,7 +7,7 @@ import { Skills } from '../../models/skills/skills.model';
 })
 export class SkillsService {
 
-  private dbPath = '/skills';
+  private dbPath = '/Skills';
   skillsRef: AngularFirestoreCollection<Skills>;
 
   constructor(private db: AngularFirestore) { 

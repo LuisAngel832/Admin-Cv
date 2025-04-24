@@ -8,7 +8,7 @@ import { WorkExperience } from '../../models/work-experience/work-experience.mod
 
 export class WorkExperienceService {
 
-  private dbPath = '/work-experience';
+  private dbPath = '/Work-experience';
   workExperienceRef: AngularFirestoreCollection<WorkExperience>;
 
   constructor(private db : AngularFirestore) { 

@@ -12,10 +12,8 @@
     <div class="col">
         
         <form>
-            <input type="text" class="txt" name="startDate" placeholder="start date (mm/yyyy)" [(ngModel)]="myEducation.startDate"> <br>
-            <input type="text" class="txt" name="endDate" placeholder="end date (mm/yyyy)" [(ngModel)]="myEducation.endDate"> <br>
-            <input type="text" class="txt" name="titulo" placeholder="titulo" [(ngModel)]="myEducation.titulo"> <br>
-            <input type="text" class="txt" name="escuela" placeholder="escuela" [(ngModel)]="myEducation.escuela"> <br>
+            <input type="text" class="txt" name="startDate" placeholder="Instituto" [(ngModel)]="myEducation.Instituto"> <br>
+            <input type="text" class="txt" name="endDate" placeholder="Nivel academico" [(ngModel)]="myEducation.NivelAcademico"> <br>
 
             <input type="submit" class="btn" value="{{ btntxt }}" (click)="AgregarJob()">
         </form>
@@ -23,7 +21,7 @@
 
     <div class="education-list">
         <div class="education-item" *ngFor="let job of education">
-          <span>{{job.escuela}} - {{job.startDate}} - {{job.endDate}}</span>
+          <span>{{job.Instituto}} - {{job.NivelAcademico}}</span>
           <button class="delete-btn" (click)="deleteJob(job.id)">delete</button>
         </div>
     </div>      

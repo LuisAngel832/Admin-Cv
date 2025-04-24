@@ -12,8 +12,8 @@
     <div class="col">
         
         <form>
-            <input type="text" class="txt" name="skill" placeholder="skill" [(ngModel)]="mySkills.skill"> <br>
-            <input type="text" class="txt" name="porcentage" placeholder="porcentage (00)" [(ngModel)]="mySkills.porcentage"> <br>
+            <input type="text" class="txt" name="skill" placeholder="skill" [(ngModel)]="mySkills.lenguajes"> <br>
+            <input type="text" class="txt" name="porcentage" placeholder="Lenguaje " [(ngModel)]="mySkills.tecnologia"> <br>
 
 
             <input type="submit" class="btn" value="{{ btntxt }}" (click)="AgregarJob()">
@@ -22,7 +22,7 @@
 
     <div class="o-list">
         <div class="o-item" *ngFor="let job of skills">
-          <span>{{job.skill}} - {{job.porcentage}}</span>
+          <span>{{job.lenguajes}} - {{job.tecnologia}}</span>
           <button class="delete-btn" (click)="deleteJob(job.id)">delete</button>
         </div>
     </div>   

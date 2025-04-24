@@ -12,7 +12,7 @@
     <div class="col">
         
         <form>
-            <input type="text" class="txt" name="description" placeholder="description" [(ngModel)]="myInterests.desciption"> <br>
+            <input type="text" class="txt" name="description" placeholder="description" [(ngModel)]="myInterests.Interest"> <br>
 
             <input type="submit" class="btn" value="{{ btntxt }}" (click)="AgregarJob()">
         </form>
@@ -20,7 +20,7 @@
 
     <div class="o-list">
         <div class="o-item" *ngFor="let job of interests">
-          <span>{{job.desciption}}</span>
+          <span>{{job.Interest}}</span>
           <button class="delete-btn" (click)="deleteJob(job.id)">delete</button>
         </div>
     </div>   

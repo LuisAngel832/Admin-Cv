@@ -12,7 +12,7 @@
     <div class="col">
         
         <form>
-            <input type="text" class="txt" name="language" placeholder="language" [(ngModel)]="myLaguages.language"> <br>
+            <input type="text" class="txt" name="language" placeholder="language" [(ngModel)]="myLaguages.Language"> <br>
 
             <input type="submit" class="btn" value="{{ btntxt }}" (click)="AgregarJob()">
         </form>
@@ -20,7 +20,7 @@
 
     <div class="o-list">
         <div class="o-item" *ngFor="let job of languages">
-          <span>{{job.language}}</span>
+          <span>{{job.Language}}</span>
           <button class="delete-btn" (click)="deleteJob(job.id)">delete</button>
         </div>
     </div>   

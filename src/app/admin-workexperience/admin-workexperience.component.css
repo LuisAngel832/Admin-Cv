@@ -1,96 +1,84 @@
+
+.container {
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  background-color: var(--color-white);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+
+
+-light {
+  background-color: #ffffff;
+}
+
 .section-title {
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: white;
-    margin: 2rem auto 1rem auto;
-    max-width: 500px;
-    text-align: left;
-    padding-left: 1rem;
-  }
-.container.color-light {
-    background-color: #ffffff;
-    padding: 2rem;
-    border-radius: 16px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    max-width: 500px;
-    margin: 2rem auto;
-  }
-  
-  .col {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-  }
-  
-  input[type="text"] {
-    padding: 0.7rem;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-  }
-  
-  input[type="submit"] {
-    padding: 0.7rem;
-    background-color: #007acc;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-  }
-  
-  input[type="submit"]:hover {
-    background-color: #005fa3;
-  }
-  
-  .life-container {
-    color: #333;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0
-  }  
-  .o-list {
-    margin-top: 1.5rem;
-    padding-top: 1rem;
-    border-top: 1px solid #ddd;
-    font-size: 1rem;
-    color: #333;
-  }
-  
-  .o-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #f4f4f4;
-    padding: 0.8rem 1rem;
-    border-radius: 8px;
-    margin-bottom: 0.8rem;
-  }
-  
-  .o-item span {
-    flex-grow: 1;
-  }
-  
-  .delete-btn {
-    background-color: #e74c3c;
-    border: none;
-    color: white;
-    padding: 0.4rem 0.8rem;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-left: 1rem;
-    font-size: 0.9rem;
-  }
-  
-  .delete-btn:hover {
-    background-color: #c0392b;
-  }
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 1rem;;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.txt {
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  background-color: #444;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn:hover {
+  background-color: #222;
+}
+
+.o-list {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.o-item {
+  background-color: #f0f0f0;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  color: #333;
+}
+
+.delete-btn {
+  background-color: transparent;
+  border: 1px solid #ccc;
+  color: #b00020;
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.delete-btn:hover {
+  background-color: #ffeaea;
+  border-color: #b00020;
+}

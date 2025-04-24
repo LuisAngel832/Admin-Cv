@@ -12,9 +12,8 @@
     <div class="col">
         
         <form>
-            <input type="text" class="txt" name="titulo" placeholder="titulo" [(ngModel)]="myCertificates.title"> <br>
-            <input type="text" class="txt" name="year" placeholder="año (yyyy)" [(ngModel)]="myCertificates.year"> <br>
-            <input type="text" class="txt" name="description" placeholder="description" [(ngModel)]="myCertificates.description"> <br>
+            <input type="text" class="txt" name="titulo" placeholder="titulo" [(ngModel)]="myCertificates.NombreCertificado"> <br>
+            
             
             <input type="submit" class="btn" value="{{ btntxt }}" (click)="AgregarJob()">
         </form>
@@ -22,7 +21,7 @@
 
     <div class="o-list">
         <div class="o-item" *ngFor="let job of certificates">
-          <span>{{job.title}} - {{job.year}}</span>
+          <span>{{job.NombreCertificado}} </span>
           <button class="delete-btn" (click)="deleteJob(job.id)">delete</button>
         </div>
     </div>      

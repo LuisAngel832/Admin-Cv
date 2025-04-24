@@ -7,7 +7,7 @@ import { Education } from '../../models/education/education.model';
 })
 export class EducationService {
 
-  private dbPath = '/education';
+  private dbPath = '/Education';
   educationRef: AngularFirestoreCollection<Education>;
 
   constructor(public db: AngularFirestore) { 

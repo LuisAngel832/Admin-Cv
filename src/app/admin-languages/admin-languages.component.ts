@@ -25,7 +25,7 @@ export class AdminLanguagesComponent {
 	)
       ).subscribe(data => {
         this.languages=data;
-	console.log(this.languages);
+	console.log("lenguaes extraidos de firebase" , this.languages);
       });
     }
 
