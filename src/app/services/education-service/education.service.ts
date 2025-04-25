@@ -25,4 +25,8 @@ export class EducationService {
   deleteEducation(id? : string): Promise<void> {
     return this.educationRef.doc(id).delete();
   }
+
+  update(id: string,myJob: Education): any {
+    return this.educationRef.doc(id).set({ ...myJob }, { merge: true });
+  }
 }

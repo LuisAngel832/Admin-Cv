@@ -25,4 +25,8 @@ export class CertificatesService {
   deleteCertificates(id? : string): Promise<void> {
     return this.certificatesRef.doc(id).delete();
   }
+
+ update(id: string,myJob: Certificates): any {
+    return this.certificatesRef.doc(id).set({ ...myJob }, { merge: true });
+  }
 }

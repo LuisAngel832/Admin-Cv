@@ -24,6 +24,14 @@ export class WorkExperienceService {
   }
 
   deleteWorkExperience(id? : string): Promise<void> {
+    console.log(id);
     return this.workExperienceRef.doc(id).delete();
   }
-}
+
+  update(id: string, myJob: WorkExperience): Promise<void> {
+    const { id: _, ...data } = myJob; 
+    return this.workExperienceRef.doc(id).set(data, { merge: true });
+  }
+  
+  
+} 

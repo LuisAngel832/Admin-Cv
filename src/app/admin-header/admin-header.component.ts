@@ -29,17 +29,34 @@ export class AdminHeaderComponent {
         });
   }
   
-  AgregarJob(){
-    console.log(this.myHeader);
-    this.headerService.createHeader(this.myHeader).then(() => {
-      console.log('Created new item successfully!');
-     });
+  AgregarJob(): void {
+    if (this.myHeader.id) {
+      
+      this.headerService.updateHeader(this.myHeader.id, this.myHeader).then(() => {
+        console.log('Actualizado correctamente');
+        this.limpiarFormulario();
+      });
+    } else {
+      
+      this.headerService.createHeader(this.myHeader).then(() => {
+        console.log('Creado correctamente');
+        this.limpiarFormulario();
+      });
     }
+  }
+  limpiarFormulario(): void {
+    this.myHeader = new Header();
+    this.btntxt = "Agregar";
+  }  
       
   deleteJob(id? :string){
     this.headerService.deleteHeader(id).then(() => {
       console.log('delete item successfully!');
     });
-       console.log(id);
+  }
+
+  update(item: Header) {
+    this.myHeader = { ...item };
+    this.btntxt = "Actualizar";
   }
 }

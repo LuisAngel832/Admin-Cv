@@ -23,6 +23,7 @@
         <div class="education-item" *ngFor="let job of education">
           <span>{{job.Instituto}} - {{job.NivelAcademico}}</span>
           <button class="delete-btn" (click)="deleteJob(job.id)">delete</button>
+          <button class="edit-btn" (click)="update(job)">update</button>
         </div>
     </div>      
 

@@ -6,41 +6,65 @@ import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-admin-workexperience',
   templateUrl: './admin-workexperience.component.html',
-  styleUrl: './admin-workexperience.component.css'
+  styleUrls: ['./admin-workexperience.component.css']
 })
 export class AdminWorkexperienceComponent {
-  itemCount: number = 0;
   btntxt: string = "Agregar";
-  goalText: string = "";
   workExperience: WorkExperience[] = [];
   myWorkExperience: WorkExperience = new WorkExperience();
 
-  constructor(public workExperienceService: WorkExperienceService)
-  {
-      console.log(this.workExperienceService);
-      this.workExperienceService.getWorkExperience().snapshotChanges().pipe(
-        map(changes =>
-          changes.map(c =>
-          ({ id: c.payload.doc.id, ...c.payload.doc.data() })
-          )
-        )
-      ).subscribe(data => {
-        this.workExperience = data;
-        console.log(this.myWorkExperience);
-      });
+  constructor(private workExperienceService: WorkExperienceService) {
+    this.loadWorkExperiences();
   }
 
-  AgregarJob(){
-    console.log(this.myWorkExperience);
-    this.workExperienceService.createWorkExperience(this.myWorkExperience).then(() => {
-      console.log('Created new item successfully!');
+  loadWorkExperiences(): void {
+    this.workExperienceService.getWorkExperience().snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c => ({
+          id: c.payload.doc.id,
+          ...c.payload.doc.data()
+        }))
+      )
+    ).subscribe(data => {
+      this.workExperience = data;
     });
   }
 
-  deleteJob(id? :string){
+  AgregarJob(): void {
+    const { id, ...data } = this.myWorkExperience;
+  
+    if (id) {
+      // UPDATE
+      this.workExperienceService.update(id, this.myWorkExperience).then(() => {
+        console.log("✅ Actualización exitosa");
+        this.resetForm();
+      }).catch(err => console.error("❌ Error en update:", err));
+    } else {
+      // CREATE solo si NO hay ID
+      this.workExperienceService.createWorkExperience(data).then(() => {
+        console.log("🆕 Creado correctamente");
+        this.resetForm();
+      }).catch((err: any) => console.error("❌ Error en create:", err));
+    }
+  }
+  
+
+  update(item: WorkExperience): void {
+    this.myWorkExperience = { ...item };
+    this.btntxt = "Actualizar";
+  }
+  
+
+  deleteJob(id?: string): void {
+    if (!id) return;
     this.workExperienceService.deleteWorkExperience(id).then(() => {
-      console.log('delete item successfully!');
+      console.log("🗑️ Eliminado correctamente:", id);
     });
-       console.log(id);
   }
+
+  resetForm(): void {
+    this.myWorkExperience = new WorkExperience(); 
+    this.btntxt = "Agregar";
+  }
+  
 }

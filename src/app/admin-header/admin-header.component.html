@@ -27,7 +27,7 @@
     <div class="o-list">
         <div class="o-item" *ngFor="let job of header">
           <span>{{job.name}}</span>
-          <button class="delete-btn" (click)="deleteJob(job.id)">delete</button>
+          <button class="edit-btn" (click)="update(job)">update</button>
         </div>
     </div>   
 

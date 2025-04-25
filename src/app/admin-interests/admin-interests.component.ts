@@ -30,16 +30,34 @@ export class AdminInterestsComponent {
   }
   
   AgregarJob(){
-    console.log(this.myInterests);
-    this.interestsService.createInterests(this.myInterests).then(() => {
-      console.log('Created new item successfully!');
-     });
+    if (this.myInterests.id) {
+      
+      this.interestsService.update(this.myInterests.id, this.myInterests).then(() => {
+        console.log('Actualizado correctamente');
+        this.resetForm();
+      });
+    } else {
+      this.interestsService.createInterests(this.myInterests).then(() => {
+        console.log('Creado correctamente');
+        this.resetForm();
+      });
     }
+  }
+  resetForm(): void {
+      this.myInterests = new Interests(); 
+      this.btntxt = "Agregar"
+      };
+    
       
   deleteJob(id? :string){
     this.interestsService.deleteInterets(id).then(() => {
       console.log('delete item successfully!');
     });
        console.log(id);
+  }
+
+  update(item: Interests) {
+    this.myInterests = { ...item };
+    this.btntxt = "Actualizar";
   }
 }

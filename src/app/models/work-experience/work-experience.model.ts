@@ -1,9 +1,9 @@
 export class WorkExperience {
     id?: string;
-    startDate?: string;
+    StartDate?: string;
     endDate?: string = '';
     location?: string = '';
     position?: string = '';
     company?: string = '';
-    accomplishments?: string = '';
+    accomplishment?: string = '';
   }

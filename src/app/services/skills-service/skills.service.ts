@@ -26,4 +26,8 @@ export class SkillsService {
     return this.skillsRef.doc(id).delete();
   }
 
+  update(id: string,myJob: Skills): any {
+    return this.skillsRef.doc(id).update(myJob);
+  }
+
 }

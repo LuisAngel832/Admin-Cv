@@ -18,9 +18,13 @@ export class HeaderService {
     return this.headerRef;
   }
 
+  updateHeader(id: string, myJob: Header): Promise<void> {
+    return this.headerRef.doc(id).set({ ...myJob }, { merge: true });
+  }
   createHeader(myJob: Header): any {
     return this.headerRef.add({ ...myJob });
   }
+  
 
   deleteHeader(id?: string): Promise<void> {
     return this.headerRef.doc(id).delete();

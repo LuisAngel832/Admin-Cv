@@ -25,15 +25,23 @@ export class AdminLanguagesComponent {
 	)
       ).subscribe(data => {
         this.languages=data;
-	console.log("lenguaes extraidos de firebase" , this.languages);
+	console.log(this.languages);
       });
     }
 
     AgregarJob(){
-      console.log(this.myLaguages);
-      this.languagesService.createLanguage(this.myLaguages).then(() => {
-        console.log('Created new item successfully!');
-      });
+      if(this.myLaguages.id){
+        this.languagesService.update(this.myLaguages.id, this.myLaguages). then(() =>
+        {
+          console.log("Update successfully!");
+          this.resetForm();
+        });
+      }else{
+        this.languagesService.createLanguage(this.myLaguages).then(() => {
+          console.log('Created successfully');
+          this.resetForm();
+        });
+      }
     }
     
     deleteJob(id? :string){
@@ -42,4 +50,14 @@ export class AdminLanguagesComponent {
       });
          console.log(id);
     }
+
+      update(item: Languages) {
+        this.myLaguages = { ...item };
+        this.btntxt = "Actualizar";
+      }
+    
+      resetForm() {
+        this.myLaguages = new Languages();
+        this.btntxt = "Agregar";
+      }
 }

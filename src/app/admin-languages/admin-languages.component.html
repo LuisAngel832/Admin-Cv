@@ -22,6 +22,7 @@
         <div class="o-item" *ngFor="let job of languages">
           <span>{{job.Language}}</span>
           <button class="delete-btn" (click)="deleteJob(job.id)">delete</button>
+          <button class="edit-btn" (click)="update(job)">update</button>
         </div>
     </div>   
 
