@@ -1,49 +1,42 @@
-name: Angular_DockerImage_v2
-
+name: Angular_DockerImage
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-
+push:
+branches: [ master ]
+pull_request:
+branches: [ master ]
 jobs:
-  angular_deploy:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Use Node.js 20.x
-        uses: actions/setup-node@v3
-        with:
-          node-version: 20
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build Angular app
-        run: npm run build -- --output-path=docs
-
-      - name: Docker login
-        env:
-          DOCKER_USER: ${{ secrets.DOCKER_USER }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-        run: echo $DOCKER_PASSWORD | docker login -u $DOCKER_USER --password-stdin
-
-      - name: Start base image (httpd)
-        run: docker run -d --name http_base httpd
-
-      - name: Copy Angular build to container
-        run: docker cp docs/. http_base:/usr/local/apache2/htdocs
-
-      - name: Commit customized image
-        run: docker commit http_base ${{ secrets.DOCKER_USER }}/admin-cv:${{ github.sha }}
-
-      - name: Push commit image
-        run: docker push ${{ secrets.DOCKER_USER }}/admin-cv:${{ github.sha }}
-
-      - name: Tag as latest
-        run: docker tag ${{ secrets.DOCKER_USER }}/admin-cv:${{ github.sha }} ${{ secrets.DOCKER_USER }}/admin-cv:latest
-
-      - name: Push latest tag
-        run: docker push ${{ secrets.DOCKER_USER }}/admin-cv:latest
+angular_deploy :
+runs-on: ubuntu-latest
+34
+The Learning Gate | Tecnológico de Monterrey
+steps:
+- uses: actions/checkout@v2
+- name: Use Node.js 16.x
+uses: actions/setup-node@v1
+with:
+node-version: 20.x
+- name: npm install
+run: npm ci
+- name: test
+run: |
+npm test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+- name: build
+run: |
+npm run build --output-path=docs
+- name: docker login
+env:
+DOCKER_USER: ${{secrets.DOCKER_USER}}
+DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+run: |
+docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+- name: Download and run the Docker base image
+run: docker run -d --name http_base httpd
+- name: copy model to the Docker image
+35
+The Learning Gate | Tecnológico de Monterrey
+run: docker cp docs/. http_base:/usr/local/apache2/htdocs
+- name: Build the custom Docker image
+run: docker commit --change "ENV MODEL_NAME http_base" http_base
+${{secrets.DOCKER_USER}}/mycv:${{ github.sha }}
+- name: Docker Push
+run: docker push ${{secrets.DOCKER_USER}}/mycv:${{ github.sha }}
