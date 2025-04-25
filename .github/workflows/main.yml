@@ -7,8 +7,7 @@ branches: [ master ]
 jobs:
 angular_deploy :
 runs-on: ubuntu-latest
-34
-The Learning Gate | Tecnológico de Monterrey
+
 steps:
 - uses: actions/checkout@v2
 - name: Use Node.js 16.x
@@ -32,8 +31,7 @@ docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
 - name: Download and run the Docker base image
 run: docker run -d --name http_base httpd
 - name: copy model to the Docker image
-35
-The Learning Gate | Tecnológico de Monterrey
+
 run: docker cp docs/. http_base:/usr/local/apache2/htdocs
 - name: Build the custom Docker image
 run: docker commit --change "ENV MODEL_NAME http_base" http_base
